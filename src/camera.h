@@ -420,7 +420,8 @@ void UpdateCamera(Camera *camera)
 
             camera->position.y += (sinf(CAMERA.angle.y)*direction[MOVE_FRONT] -
                                    sinf(CAMERA.angle.y)*direction[MOVE_BACK] +
-                                   1.0f*direction[MOVE_UP] - 1.0f*direction[MOVE_DOWN])/PLAYER_MOVEMENT_SENSITIVITY;
+                                   cosf(CAMERA.angle.y)*direction[MOVE_UP] - 
+                                   cosf(CAMERA.angle.y)*direction[MOVE_DOWN])/PLAYER_MOVEMENT_SENSITIVITY;
 
             camera->position.z += (cosf(CAMERA.angle.x)*direction[MOVE_BACK] -
                                    cosf(CAMERA.angle.x)*direction[MOVE_FRONT] +
@@ -449,7 +450,7 @@ void UpdateCamera(Camera *camera)
 
             // Camera position update
             // NOTE: On CAMERA_FIRST_PERSON player Y-movement is limited to player 'eyes position'
-            camera->position.y = CAMERA.playerEyesPosition - sinf(swingCounter/CAMERA_FIRST_PERSON_STEP_TRIGONOMETRIC_DIVIDER)/CAMERA_FIRST_PERSON_STEP_DIVIDER;
+            // camera->position.y = CAMERA.playerEyesPosition - sinf(swingCounter/CAMERA_FIRST_PERSON_STEP_TRIGONOMETRIC_DIVIDER)/CAMERA_FIRST_PERSON_STEP_DIVIDER;
 
             camera->up.x = sinf(swingCounter/(CAMERA_FIRST_PERSON_STEP_TRIGONOMETRIC_DIVIDER*2))/CAMERA_FIRST_PERSON_WAVING_DIVIDER;
             camera->up.z = -sinf(swingCounter/(CAMERA_FIRST_PERSON_STEP_TRIGONOMETRIC_DIVIDER*2))/CAMERA_FIRST_PERSON_WAVING_DIVIDER;
