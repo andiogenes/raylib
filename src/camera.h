@@ -445,7 +445,7 @@ void UpdateCamera(Camera *camera)
             camera->target.z = camera->position.z - transform.m14;
 
             // If movement detected (some key pressed), increase swinging
-            for (int i = 0; i < 6; i++) if (direction[i]) { swingCounter++; break; }
+            // for (int i = 0; i < 6; i++) if (direction[i]) { swingCounter++; break; }
 
             // Camera position update
             // NOTE: On CAMERA_FIRST_PERSON player Y-movement is limited to player 'eyes position'
